@@ -1,24 +1,36 @@
-# README
+# Gerente da Bola ⚽
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**Gerente da Bola** is a sports team management simulator, inspired by classics like *Elifoot*. Take on the role of a coach: sign and sell players, define tactics, manage finances, and lead your team to victory.
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+- Squad building and player transfers
+- Tactical team setup and match simulation
+- Promotion and relegation system
+- Club finances and salary management
+- Lightweight interface with addictive gameplay
 
-* System dependencies
+## Tech Stack
 
-* Configuration
+- Ruby on Rails
+- PostgreSQL
+- Hotwire / Turbo
+- GitHub Actions (CI)
 
-* Database creation
+## Getting Started
 
-* Database initialization
+### Prerequisites
 
-* How to run the test suite
+- Ruby 3.1+
+- PostgreSQL
+- Node.js & Yarn (for Rails assets)
 
-* Services (job queues, cache servers, search engines, etc.)
+### Setup
 
-* Deployment instructions
+```bash
+bundle install
+yarn install
+rails db:setup
+rails s
 
-* ...
+Then access: http://localhost:3000
