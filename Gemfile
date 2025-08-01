@@ -26,6 +26,18 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+# Bootstrap gem that integrates with Sprockets
+gem "bootstrap", "~> 5.3.3"
+
+# SASS compiler that the Bootstrap gem uses
+gem "sassc-rails"
+
+# Gem for user authentication, providing functionality such as registration, login, logout, and password recovery.
+gem "devise"
+
+# Simplifies the creation of Rails forms, with easy integration with CSS frameworks like Bootstrap.
+gem "simple_form"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
