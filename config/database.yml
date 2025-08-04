@@ -79,6 +79,11 @@ test:
 #
 production:
   <<: *default
-  database: gerente_da_bola_production
-  username: gerente_da_bola
-  password: <%= ENV["GERENTE_DA_BOLA_DATABASE_PASSWORD"] %>
+  <% if ENV['RAILS_GROUPS'] == 'assets' %>
+  adapter: postgresql
+  encoding: unicode
+  database: app_production_dummy
+  pool: 5
+  <% else %>
+  url: <%= ENV["DATABASE_URL"] %>
+  <% end %>
