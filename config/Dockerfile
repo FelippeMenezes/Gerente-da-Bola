@@ -16,7 +16,8 @@ RUN apt-get update -qq && \
     git \
     libpq-dev \
     nodejs \
-    yarn
+    yarn \
+    jq
 
 
 # ---- STAGE 2: Gem Builder ----

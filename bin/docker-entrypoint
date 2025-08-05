@@ -1,8 +1,29 @@
 #!/bin/bash
 set -e
 
-# Remove a potentially pre-existing server.pid for Rails.
-rm -f /rails/tmp/pids/server.pid
+echo "Entrypoint: Starting database configuration override..."
 
-# Then exec the container's main process (what's set as CMD in the Dockerfile).
+# O Koyeb passa a DATABASE_URL como um JSON, não um URL.
+# Vamos extrair a senha e construir um URL de verdade.
+DB_SECRET_JSON=$DATABASE_URL
+
+# Extrai a senha usando a ferramenta 'jq'
+DB_PASSWORD=$(echo "$DB_SECRET_JSON" | jq -r .password)
+
+# Valores fixos que já conhecemos do painel do Koyeb
+DB_USER="koyeb"
+DB_HOST="ep-restless-feather-a4vieac2.us-east-1.pg.koyeb.app"
+DB_NAME="koyebdb"
+
+# Constrói o novo e correto DATABASE_URL e o exporta para o ambiente
+export DATABASE_URL="postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}"
+
+echo "Entrypoint: New DATABASE_URL constructed successfully."
+
+# Agora, com a variável correta, rode as migrations
+echo "Entrypoint: Running database migrations..."
+bundle exec rails db:migrate
+
+# Finalmente, inicie a aplicação principal
+echo "Entrypoint: Starting the main application..."
 exec "$@"
