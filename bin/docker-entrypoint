@@ -1,29 +1,28 @@
 #!/bin/bash
 set -e
 
-echo "Entrypoint: Starting database configuration override..."
+echo "Entrypoint: Starting database configuration override (sed version)..."
 
-# O Koyeb passa a DATABASE_URL como um JSON, não um URL.
-# Vamos extrair a senha e construir um URL de verdade.
+# O Koyeb passa a DATABASE_URL como um JSON.
+# Vamos extrair a senha usando apenas 'sed', que sempre está presente.
 DB_SECRET_JSON=$DATABASE_URL
 
-# Extrai a senha usando a ferramenta 'jq'
-DB_PASSWORD=$(echo "$DB_SECRET_JSON" | jq -r .password)
+# Usa 'sed' para remover tudo antes de '"password":"' e tudo depois do '"' final.
+DB_PASSWORD=$(echo "$DB_SECRET_JSON" | sed -n 's/.*"password":"\([^"]*\)".*/\1/p')
 
-# Valores fixos que já conhecemos do painel do Koyeb
+# Valores fixos que já conhecemos
 DB_USER="koyeb"
 DB_HOST="ep-restless-feather-a4vieac2.us-east-1.pg.koyeb.app"
 DB_NAME="koyebdb"
 
-# Constrói o novo e correto DATABASE_URL e o exporta para o ambiente
+# Constrói o novo e correto DATABASE_URL
 export DATABASE_URL="postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}"
 
-echo "Entrypoint: New DATABASE_URL constructed successfully."
+echo "Entrypoint: New DATABASE_URL constructed. Running migrations..."
 
-# Agora, com a variável correta, rode as migrations
-echo "Entrypoint: Running database migrations..."
+# Rode as migrations
 bundle exec rails db:migrate
 
-# Finalmente, inicie a aplicação principal
+# Inicie a aplicação
 echo "Entrypoint: Starting the main application..."
 exec "$@"
