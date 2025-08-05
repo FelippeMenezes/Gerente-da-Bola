@@ -1,8 +1,12 @@
 #!/bin/bash
 set -e
 
-# Remove a potentially pre-existing server.pid for Rails.
-rm -f /rails/tmp/pids/server.pid
+echo "Entrypoint script started..."
+
+# Run database migrations
+echo "Running database migrations..."
+bundle exec rails db:migrate
 
 # Then exec the container's main process (what's set as CMD in the Dockerfile).
+echo "Starting the main application..."
 exec "$@"
