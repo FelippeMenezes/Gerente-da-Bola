@@ -6,21 +6,20 @@ class ApplicationController < ActionController::Base
   private
 
   def handle_user_redirect
-    # Evita redirecionamentos indesejados se já estivermos numa página de equipas
-    # ou a processar a sua criação/atualização.
+    # Prevents unwanted redirects if we're already on a team page or processing its creation/update.
     return if controller_name == "teams"
 
-    # Verifica se o utilizador tem equipas.
-    # A consulta `first` é eficiente, pois só precisa de encontrar uma equipa.
+    # Checks if the user has teams. 
+    # The `first` query is efficient, as it only needs to find one team.
     user_team = current_user.teams.first
 
     if user_team.present?
-      # CASO 1: O utilizador JÁ TEM uma equipa.
-      # Redireciona para a página de exibição (show) da primeira equipa encontrada.
+      # CASE 1: The user ALREADY HAS a team.
+      # Redirects to the show page of the first team found.
       redirect_to team_path(user_team)
     else
-      # CASO 2: O utilizador NÃO TEM nenhuma equipa.
-      # Redireciona para a página de criação de uma nova equipa.
+      # CASE 2: The user DOES NOT HAVE any teams.
+      # Redirects to the new team creation page.
       redirect_to teams_new_path
     end
   end
