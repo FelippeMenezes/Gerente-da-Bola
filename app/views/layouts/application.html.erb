@@ -4,8 +4,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     
     <%= favicon_link_tag '1.png' %>
-    <link rel="apple-touch-icon" href="/app/assets/images/1.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/app/assets/images/1.png">
+    <%= tag.link rel: "apple-touch-icon", href: asset_path('1.png') %>
+    <%= tag.link rel: "icon", type: "image/png", sizes: "192x192", href: asset_path('1.png') %>
     
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
