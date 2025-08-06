@@ -6,4 +6,8 @@ class Team < ApplicationRecord
   has_many :away_matches, class_name: 'Match', foreign_key: 'away_team_id', dependent: :destroy
 
   validates :name, presence: true
+
+  def incomplete?
+    players.count < 11
+  end
 end

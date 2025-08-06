@@ -1,0 +1,101 @@
+
+// Este ficheiro estiliza o nosso componente "team-show".
+// A abordagem é "Mobile First": estilizamos para telemóveis primeiro
+// e depois adicionamos ajustes para ecrãs maiores.
+
+// "Block": A caixa principal do nosso componente.
+.team-show {
+  margin-top: 1.5rem;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 0.375rem;
+  background-color: #ffffff;
+}
+
+// "Element": O cabeçalho do nosso componente.
+.team-show-header {
+  padding: 0.75rem 1rem;
+  background-color: var(--bs-secondary-bg);
+  border-bottom: 1px solid var(--bs-border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  // Estilo para o título H1.
+  h1 {
+    margin: 0;
+    // --- TIPOGRAFIA RESPONSIVA ---
+    // Tamanho de fonte base para ecrãs pequenos (mobile).
+    font-size: 1.25rem;
+  }
+}
+
+// "Element": O corpo principal do nosso componente.
+.team-show-body {
+  padding: 1rem;
+}
+
+// "Element": O alerta de aviso.
+.team-show-alert {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #fff3cd;
+  color: #664d03;
+  border: 1px solid #ffecb5;
+  border-radius: 0.25rem;
+
+  // Tamanho de fonte base para o alerta.
+  font-size: 0.9rem;
+
+  a {
+    font-weight: bold;
+    color: #523e02;
+  }
+}
+
+// "Element": O título da lista de jogadores.
+.team-show-players-title {
+  margin-top: 1.5rem;
+  // --- TIPOGRAFIA RESPONSIVA ---
+  // Tamanho de fonte base para ecrãs pequenos.
+  font-size: 1.1rem;
+}
+
+// "Element": A lista de jogadores.
+.team-show-player-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 1rem;
+}
+
+// "Element": Cada jogador na lista.
+.team-show-player-item {
+  padding: 0.75rem 0.25rem;
+  border-bottom: 1px solid var(--bs-border-color-translucent);
+  // --- TIPOGRAFIA RESPONSIVA ---
+  // Tamanho de fonte base para ecrãs pequenos.
+  font-size: 1rem;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+
+// --- MEDIA QUERIES PARA RESPONSIVIDADE ---
+// As regras dentro deste bloco só serão aplicadas se a largura da tela
+// for de 768px ou mais (padrão para tablets e desktops).
+
+@media (min-width: 768px) {
+  // Vamos aumentar o tamanho das fontes para ecrãs maiores.
+  .team-show-header h1 {
+    font-size: 1.75rem; // Fonte maior para o título principal.
+  }
+
+  .team-show-alert {
+    font-size: 1rem; // Fonte do alerta um pouco maior.
+  }
+
+  .team-show-players-title {
+    font-size: 1.25rem; // Fonte do título da lista maior.
+  }
+}
