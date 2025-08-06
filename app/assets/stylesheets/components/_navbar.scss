@@ -1,10 +1,19 @@
 .navbar-myproject {
-justify-content: space-between;
-background: white;
+    justify-content: space-between;
+    background: rgb(15, 102, 12);
+    padding-top: 1px;
+    padding-bottom: 1px;
 }
 .navbar-myproject .navbar-collapse {
-flex-grow: 0;
+    flex-grow: 0;
 }
 .navbar-myproject .navbar-brand img {
-width: 40px;
+    width: 40px;
+}
+.nav-item .nav-link {
+    color: white;
+}
+
+.navbar-brand-img {
+    border-radius: 5px;
 }
