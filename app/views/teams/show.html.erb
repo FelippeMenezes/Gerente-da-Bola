@@ -1,1 +1,29 @@
-<h1><%= @team.name %></h1>
+<div class="container">
+  <div class="team-show">
+    <div class="team-show-header">
+      <h1><%= @team.name %></h1>
+    </div>
+
+    <div class="team-show-body">
+      <% if @team.incomplete? %>
+        <div class="team-show-alert">
+          <strong>Atenção!</strong> A sua equipa está incompleta. É necessário ter no mínimo 11 jogadores para competir.
+          <%= link_to "Comprar Jogador", "#" %>
+        </div>
+      <% end %>
+
+      <h3 class="team-show-players-title">Plantel de Jogadores</h3>
+
+      <% if @team.players.any? %>
+        <ul class="team-show-player-list">
+          <% @team.players.each do |player| %>
+            <li class="team-show-player-item"><%= player.name %> - <%= player.position %> </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>O seu time ainda não tem jogadores.</p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
