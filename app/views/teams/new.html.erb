@@ -1,0 +1,23 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h2>Crie o seu time</h2>
+        </div>
+        <div class="card-body">
+          <%= form_with model: @team, url: teams_path, method: :post, local: true do |form| %>
+            <div class="mb-3">
+              <%= form.label :name, "Nome do Time", class: "form-label" %>
+              <%= form.text_field :name, class: "form-control", placeholder: "Ex: Vencedores FC" %>
+            </div>
+
+            <div class="d-grid">
+              <%= form.submit "Criar Time", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
