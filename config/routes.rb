@@ -22,9 +22,9 @@ Rails.application.routes.draw do
   put    "/players/:id",      to: "players#update"
   delete "/players/:id",      to: "players#destroy"
 
-  post   "/players/:id/list_for_sale", to: "players#list_for_sale", as: :list_for_sale_player
-  post   "/players/:id/buy",           to: "players#buy",           as: :buy_player
-  post   "/players/:id/sell",   to: "players#sell",   as: :sell_player
+ # Para disponibilizar ou indisponibilizar um jogador à venda
+  post   "/players/:id/remove_from_sale", to: "players#remove_from_sale", as: :remove_from_sale_player
+  post   "/players/:id/for_sale", to: "players#for_sale", as: :for_sale_player
 
   # Matches
   get    "/matches",          to: "matches#index"
@@ -37,5 +37,5 @@ Rails.application.routes.draw do
   delete "/matches/:id",      to: "matches#destroy"
 
   # Market
-  get "/market", to: "market#index", as: :market
+  get 'market', to: 'market#index', as: 'market_index'
 end

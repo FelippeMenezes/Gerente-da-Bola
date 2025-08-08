@@ -10,12 +10,12 @@
       <ul class="navbar-nav ms-auto">
                 <% if user_signed_in? %>
           <%# Set all menu items in one place %>
-          <% menu_items = [
-               { text: "Option 1", path: "#" },
-               { text: "Option 2", path: "#" },
-               { type: :divider },
-               { text: "Log Out", path: destroy_user_session_path, data: { method: :delete, confirm: "Are you sure you want to log out?" } }
-             ]
+          <% menu_items = [ 
+              { text: "Meu Time", path: teams_path(current_user.teams.first) },
+              { text: "Mercado", path: market_index_path },
+              { type: :divider },
+              { text: "Log Out", path: destroy_user_session_path, data: { method: :delete, confirm: "Are you sure you want to log out?" } }
+            ]
           %>
           <!-- ============== DESKTOP ============== -->
           <li class="nav-item dropdown d-none d-md-block">
