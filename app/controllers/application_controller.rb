@@ -6,8 +6,11 @@ class ApplicationController < ActionController::Base
   private
 
   def handle_user_redirect
-    # Prevents unwanted redirects if we're already on a team page or processing its creation/update.
-    return if controller_name == "teams"
+    # This redirect logic should only apply when the user visits the root page.
+    # This prevents the user from being redirected away from other important pages
+    # like the Market, Players, etc., after they have logged in.
+    # We only want to guide them from the home page to their team page.
+    return unless controller_name == 'pages' && action_name == 'home'
 
     # Checks if the user has teams. 
     # The `first` query is efficient, as it only needs to find one team.
@@ -20,8 +23,7 @@ class ApplicationController < ActionController::Base
     else
       # CASE 2: The user DOES NOT HAVE any teams.
       # Redirects to the new team creation page.
-      redirect_to teams_new_path
+      redirect_to new_team_path
     end
   end
 end
-

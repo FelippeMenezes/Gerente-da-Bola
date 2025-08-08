@@ -1,2 +1,36 @@
-<h1>Market#index</h1>
-<p>Find me in app/views/market/index.html.erb</p>
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1><i class="fas fa-store"></i> Mercado de Transferências</h1>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-hover align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th>Nome</th>
+          <th>Posição</th>
+          <th>Nível</th>
+          <th>Time</th>
+          <th>Preço</th>
+          <th class="text-center">Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @players_for_sale.each do |player| %>
+          <tr>
+            <td><%= player.name %></td>
+            <td><%= player.position %></td>
+            <td><%= player.level %></td>
+            <td><%= player.team.name %></td>
+            <td><%= number_to_currency(player.price) %></td>
+            <td class="text-center">
+              <%= button_to "Comprar", "#", class: "btn btn-success btn-sm" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <%= link_to "Voltar para o meu time", team_path(@team), class: "btn btn-primary mt-3" %>
+</div>
