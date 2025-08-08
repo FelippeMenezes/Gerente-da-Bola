@@ -31,4 +31,7 @@ Rails.application.routes.draw do
   patch  "/matches/:id",      to: "matches#update"
   put    "/matches/:id",      to: "matches#update"
   delete "/matches/:id",      to: "matches#destroy"
+
+  # Market
+  get 'market/index'
 end
