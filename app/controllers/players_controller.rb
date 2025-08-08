@@ -35,6 +35,12 @@ class PlayersController < ApplicationController
     redirect_to players_path, notice: 'Player deleted.'
   end
 
+  def list_for_sale; end
+
+  def buy; end
+
+  def sell; end
+
   private
 
   def set_player
