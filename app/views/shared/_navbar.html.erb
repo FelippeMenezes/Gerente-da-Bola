@@ -11,7 +11,7 @@
                 <% if user_signed_in? %>
           <%# Set all menu items in one place %>
           <% menu_items = [ 
-              { text: "Meu Time", path: teams_path(current_user.teams.first) },
+              { text: "Meu Time", path: team_path(@team) },
               { text: "Mercado", path: market_index_path },
               { type: :divider },
               { text: "Log Out", path: destroy_user_session_path, data: { method: :delete, confirm: "Are you sure you want to log out?" } }
