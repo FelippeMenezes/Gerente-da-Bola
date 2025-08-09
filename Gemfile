@@ -38,6 +38,9 @@ gem "devise"
 # Simplifies the creation of Rails forms, with easy integration with CSS frameworks like Bootstrap.
 gem "simple_form"
 
+# # Gem for generating fake data, useful for seeds and tests.
+gem 'faker'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 

@@ -21,7 +21,11 @@
             <td><%= player.name %></td>
             <td><%= player.position %></td>
             <td><%= player.level %></td>
-            <td><%= player.team.name %></td>
+            <% if player.team.present? %>
+              <td><%= player.team.name %></td>
+            <% else %>
+              <td>Sem Time</td>
+            <% end %>
             <td><%= number_to_currency(player.price) %></td>
             <td class="text-center">
               <%= button_to "Comprar", "#", class: "btn btn-success btn-sm" %>

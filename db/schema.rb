@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_08_08_135907) do
+ActiveRecord::Schema[7.1].define(version: 2025_08_09_021931) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,7 +31,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_08_135907) do
     t.integer "red_card"
     t.integer "price"
     t.boolean "injury"
-    t.bigint "team_id", null: false
+    t.bigint "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "for_sale", default: false
