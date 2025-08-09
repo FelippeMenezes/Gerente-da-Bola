@@ -3,7 +3,7 @@ class MarketController < ApplicationController
   before_action :set_and_verify_user_team
 
   def index
-    @players_for_sale = Player.where(for_sale: true).where.not(team: @team)
+    @players_for_sale = Player.where(for_sale: true)
   end
 
   private
